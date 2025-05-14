@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edge Case Tests for Markdown-to-HTML</title>
+</head>
+<body>
+<h1>Edge Case Tests for Markdown-to-HTML</h1>
+<h2>Empty file</h2>
+<h2>Only code block</h2>
+<pre><code>
+code only
+</code></pre>
+<h2>List with blank lines between items</h2>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+<h2>Nested lists (should not be nested in output)</h2>
+<ul>
+<li>Parent</li>
+<li>Child</li>
+<li>Parent 2</li>
+</ul>
+<h2>Inline code with backticks: `<code> </code>code<code> </code>`</h2>
+<h2>Bold and italic together: <em><strong>bolditalic</strong></em></h2>
+<h2>Unclosed formatting</h2>
+<p>*<em>bold </em>italic</p>
+<h2>Heading with trailing hashes</h2>
+<h3>Heading</h3>
+<h2>Link with title</h2>
+<p><a href="https://google.com">Google</a></p>
+<h2>Escaped markdown</h2>
+<p><em>not italic</em> # not heading</p>
+</body>
+</html>
