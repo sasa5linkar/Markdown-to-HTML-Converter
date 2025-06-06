@@ -34,8 +34,12 @@ def parse_markdown(lines):
 
     def parse_inline(text):
         text = re.sub(r'\\([*#`\[\]])', r'\1', text)
-        text = re.sub(r'``([^`]+)``', r'<code>\1</code>', text)
-        text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+
+        def repl_code(match):
+            return '<code>' + escape_html(match.group(1)) + '</code>'
+
+        text = re.sub(r'``([^`]+)``', repl_code, text)
+        text = re.sub(r'`([^`]+)`', repl_code, text)
         text = re.sub(r'\*\*\*([^*]+)\*\*\*', r'<em><strong>\1</strong></em>', text)
         text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
         text = re.sub(r'\*([^*]+)\*', r'<em>\1</em>', text)
