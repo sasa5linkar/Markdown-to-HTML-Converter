@@ -1,4 +1,4 @@
-# LLMS.txt - LLM Friendly Project Overview
+# llm.txt - LLM Friendly Project Overview
 
 ## Project Overview
 This repository contains a minimal Markdown to HTML converter implemented in Python. It reads Markdown files and converts them to a simplified HTML representation. The converter supports common features such as headings, bold and italic text, inline code, code blocks, links, and ordered/unordered lists. The output HTML includes a simple page structure with an optional title derived from the first heading.
