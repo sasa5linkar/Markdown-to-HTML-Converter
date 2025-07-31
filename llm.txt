@@ -1,0 +1,31 @@
+# llm.txt - LLM Friendly Project Overview
+
+## Project Overview
+This repository contains a minimal Markdown to HTML converter implemented in Python. It reads Markdown files and converts them to a simplified HTML representation. The converter supports common features such as headings, bold and italic text, inline code, code blocks, links, and ordered/unordered lists. The output HTML includes a simple page structure with an optional title derived from the first heading.
+
+## Key Concepts
+- **Markdown Parsing**: Converts Markdown lines to HTML elements, handling paragraphs, lists, headings, and code blocks.
+- **HTML Building**: Wraps parsed HTML fragments in a minimal document structure with `<head>` and `<body>` tags.
+- **Command-line Interface**: Provides a script (`md2html.py`) for converting Markdown files directly from the command line.
+- **Testing**: Uses a small test suite (`test/test_md2html.py`) to verify the conversion results against expected HTML outputs.
+
+## Architecture and Structure
+- **md_parser.py** / **parser.py**: Core Markdown parsing logic. These modules transform lists of input lines into HTML snippets and extract the document title.
+- **html_builder.py**: Contains `build_html` which wraps parsed HTML into a basic HTML document.
+- **md2html.py**: CLI entry point. Reads a Markdown file (or stdin), parses it, builds the HTML document, and outputs the result.
+- **test/**: Test assets and expected HTML outputs used by the unit tests.
+
+## Usage Examples
+```sh
+python md2html.py input.md > output.html
+```
+Run the converter with an input Markdown file and redirect the output to an HTML file. Alternatively, run the script without arguments to read Markdown from standard input.
+
+## Important Files and Directories
+- `md_parser.py`, `parser.py` – Markdown parsing implementations
+- `html_builder.py` – HTML page builder
+- `md2html.py` – Main CLI application
+- `test/` – Sample Markdown files, expected HTML outputs, and tests
+- `README.md` – Project documentation and usage instructions
+- `LICENSE` – Licensing information (CC0)
+
