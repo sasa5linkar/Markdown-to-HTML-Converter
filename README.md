@@ -26,7 +26,10 @@ python md2html.py input.md > output.html
 ## Requirements
 
 - Python 3.x
-- No external dependencies (uses only the Python standard library)
+- No external dependencies (uses only the Python standard library). A
+  `requirements.txt` file is included for convenience and is intentionally
+  empty, so `pip install -r requirements.txt` will succeed without
+  installing anything.
 
 ## Example
 
