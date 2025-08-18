@@ -1,4 +1,7 @@
+"""Minimal Markdown parsing utilities."""
+
 import re
+from html import escape as html_escape
 
 def parse_markdown(lines):
     html = []
@@ -27,7 +30,7 @@ def parse_markdown(lines):
             while code_block_lines and code_block_lines[0].strip() == '':
                 code_block_lines.pop(0)
             html.append('<pre><code>')
-            html.extend([escape_html(line) for line in code_block_lines])
+            html.extend([html_escape(line, quote=False) for line in code_block_lines])
             html.append('</code></pre>')
             code_block_lines.clear()
             in_code_block = False
@@ -36,7 +39,7 @@ def parse_markdown(lines):
         text = re.sub(r'\\([*#`\[\]])', r'\1', text)
 
         def repl_code(match):
-            return '<code>' + escape_html(match.group(1)) + '</code>'
+            return '<code>' + html_escape(match.group(1), quote=False) + '</code>'
 
         text = re.sub(r'``([^`]+)``', repl_code, text)
         text = re.sub(r'`([^`]+)`', repl_code, text)
@@ -45,11 +48,6 @@ def parse_markdown(lines):
         text = re.sub(r'\*([^*]+)\*', r'<em>\1</em>', text)
         text = re.sub(r'\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)', r'<a href="\2">\1</a>', text)
         return text
-
-    def escape_html(text):
-        return (text.replace('&', '&amp;')
-                    .replace('<', '&lt;')
-                    .replace('>', '&gt;'))
 
     prev_list_type = None
     for idx, line in enumerate(lines):
