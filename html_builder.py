@@ -1,18 +1,19 @@
+"""HTML document assembly helpers."""
+
+from html import escape as html_escape
+
+
 def build_html(html_body, title):
-    def escape_html(text):
-        return (text.replace('&', '&amp;')
-                    .replace('<', '&lt;')
-                    .replace('>', '&gt;'))
+    """Wrap parsed HTML snippets with a minimal document shell."""
     output_lines = [
-        '<!DOCTYPE html>',
+        "<!DOCTYPE html>",
         '<html lang="en">',
-        '<head>',
+        "<head>",
         '  <meta charset="UTF-8">',
-        f'  <title>{escape_html(title) if title else "Document"}</title>',
-        '</head>',
-        '<body>'
+        f'  <title>{html_escape(title, quote=False) if title else "Document"}</title>',
+        "</head>",
+        "<body>",
     ]
     output_lines.extend(html_body)
-    output_lines.append('</body>')
-    output_lines.append('</html>')
+    output_lines.extend(["</body>", "</html>"])
     return output_lines
