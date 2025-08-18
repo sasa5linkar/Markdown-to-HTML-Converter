@@ -12,10 +12,16 @@ Paragraph with *italic* text and **bold** text.
 
 `Inline code example`
 
-```
+```text
 Code block line 1
 Code block line 2
 ```
+
+### Level 3 Heading
+
+#### Level 4 Heading
+
+##### Level 5 Heading
 
 ###### Level 6 Heading
 
